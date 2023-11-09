@@ -1,0 +1,7 @@
+{
+  "name": "gourmetiee",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

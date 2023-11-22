@@ -7,6 +7,8 @@ import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
 
+import { CarrinhoComponent } from '../Components/carrinho/carrinho.component';
+
 @NgModule({
   imports: [
     IonicModule,
@@ -14,6 +16,6 @@ import { TabsPage } from './tabs.page';
     FormsModule,
     TabsPageRoutingModule
   ],
-  declarations: [TabsPage]
+  declarations: [TabsPage, CarrinhoComponent]
 })
 export class TabsPageModule {}

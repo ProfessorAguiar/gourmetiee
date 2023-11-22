@@ -17,3 +17,18 @@ ion-tab-button:hover{
     color: #970000;
     background-color: #b57f14;
 }
+.loginPhoto{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    display: block;
+    max-width: 60px;
+    max-height: 60px;
+    margin-right: 10px;
+}
+.loginPhoto ion-img{
+    aspect-ratio: 1/1;
+    margin-top: 30px;
+
+}

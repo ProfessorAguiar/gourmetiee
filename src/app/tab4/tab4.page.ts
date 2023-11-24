@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { doc, collection, setDoc, Firestore} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-tab4',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab4Page implements OnInit {
 
-  constructor() { }
+  cadastrarPromo(produto: any, valor: any, descricao: any, qtd: any, imagem: any) {
+    const promo = {
+      descricao: descricao,
+      img: imagem,
+      promocao: produto,
+      qtd: qtd,
+      valor: valor,
+    }
+    const document = doc(collection(this.firestore, 'promos'));
+    return setDoc(document, promo);
+}
 
-  ngOnInit() {
-  }
+constructor(private firestore: Firestore) { }
+
+ngOnInit() {
+}
 
 }

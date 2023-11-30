@@ -14,6 +14,8 @@ export class Tab3Page {
   valorTotal: string = '0,00'
   count: number = 0;
   isModalOpen = false;
+  cliente = sessionStorage.getItem('Usuario')
+  fotoCliente = sessionStorage.getItem('fotoPerfil')
   setOpen(isOpen: boolean, imagem: any, Nome: any, Descricao: any, pValor: any, pQtd: any) {
     this.isModalOpen = isOpen;
     this.produto[0] = { pNome: Nome, pDescricao: Descricao, pValor: pValor, pImg: imagem, pQtd: pQtd }
@@ -31,11 +33,11 @@ export class Tab3Page {
   }
   increment() {
     if (this.count < this.produto[0].pQtd) {
-    this.count++;
-    const a = (this.produto[0].pValor).replace(",", ".")
-    console.log(a * this.count)
-    this.valorTotal = String((a * this.count).toFixed(2))
-    this.valorTotal = this.valorTotal.replace('.', ',')
+      this.count++;
+      const a = (this.produto[0].pValor).replace(",", ".")
+      console.log(a * this.count)
+      this.valorTotal = String((a * this.count).toFixed(2))
+      this.valorTotal = this.valorTotal.replace('.', ',')
     }
   }
 
@@ -48,9 +50,41 @@ export class Tab3Page {
       this.valorTotal = this.valorTotal.replace('.', ',')
     }
   }
-  addCarrinho() {
-    localStorage.setItem('produto', this.produto[0]);
-    localStorage.setItem('valor total', this.valorTotal);
+  async addCarrinho() {
+    // const carrinho = {
+    //   cliente: '',
+    //   fotoCliente: '',
+    //   produtos:
+    //     {
+    //       produto: {
+    //         nome: String(this.produto[0].pNome),
+    //         descricao: String(this.produto[0].pDescricao),
+    //         qtd: String(this.produto[0].pQtd),
+    //         valor: String(this.produto[0].pValor),
+    //         imagem: String(this.produto[0].pImg)
+    //       },
+    //     },
+    //     valorTotal:String(this.valorTotal)
+    // }
+    // const document = doc(collection(this.firestore, 'Carrinho'));
+    // return setDoc(document, carrinho);
+    if (this.cliente !== null) {
+      await setDoc(doc(this.firestore, "Carrinho", String(this.cliente)), {
+        fotoCliente: String(this.fotoCliente),
+        produtos: {
+          produto: {
+            nome: String(this.produto[0].pNome),
+            descricao: String(this.produto[0].pDescricao),
+            qtd: String(this.count),
+            valor: String(this.produto[0].pValor),
+            imagem: String(this.produto[0].pImg)
+          },
+        },
+        valorTotal: String(this.valorTotal)
+      });
+    }else{
+      alert('faça Login')
+    }
   }
   constructor(private af: Storage, private firestore: Firestore) { }
 }

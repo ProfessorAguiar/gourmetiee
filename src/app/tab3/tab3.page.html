@@ -1,17 +1,54 @@
 <ion-content [fullscreen]="true">
   <swiper-container slides-per-view="2" speed="500" loop="true" css-mode="true">
     <swiper-slide *ngFor="let p of promos">
-      <ion-card>
+      <ion-card (click)="setOpen(true, p.img, p.produto, p.descricao, p.valor, p.qtd)">
         <img src={{p.img}} />
         <ion-card-header>
           <ion-card-title>{{p.produto}}</ion-card-title>
           <ion-card-subtitle>Destaque da semana</ion-card-subtitle>
         </ion-card-header>
-      
+
         <ion-card-content>
           R${{p.valor}}
         </ion-card-content>
       </ion-card>
     </swiper-slide>
   </swiper-container>
+
+
+
 </ion-content>
+
+
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Modal</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false,'','','','','')">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <div class="modalP">
+      <img src={{produto[0].pImg}} />
+      <p class="descricao">
+        {{produto[0].pDescricao}}
+      </p>
+      
+      <div class="counter__section">
+        <p>Quantidade:</p>
+        <ion-button (click)="decrement()" class="bt">-</ion-button>
+        <p>{{count}}</p>
+        <ion-button (click)="increment()" class="bt">+</ion-button>
+      </div>
+      <p class="valor">
+       Valor Unitário: R$ {{produto[0].pValor}}
+      </p>
+      <p class="valor">
+       Valor Total: R$ {{valorTotal}}
+      </p>
+      <ion-button expand="block" (click)="addCarrinho()">Adicionar ao carrinho</ion-button>
+    </div>
+  </ng-template>
+</ion-modal>

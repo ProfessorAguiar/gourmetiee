@@ -1,24 +1,29 @@
 ion-content {
     --background: url(../../assets/images/fundo.jpg) no-repeat center/cover fixed;
 }
-img{
+
+img {
     width: 100%;
     height: 140px;
 }
-ion-card-title{
+
+ion-card-title {
     font-size: 14px;
     font-weight: 800;
 }
-ion-card-header{
+
+ion-card-header {
     margin: 0;
     padding: 5px;
     align-items: center;
     align-content: center;
 }
-ion-card-subtitle{
+
+ion-card-subtitle {
     font-size: 10px;
 }
-ion-card-content{
+
+ion-card-content {
     display: flex;
     width: 100%;
     align-items: center;
@@ -31,7 +36,48 @@ ion-card-content{
     background-color: rgb(44, 44, 44);
     margin: 0;
     padding: 0;
-}   
-ion-card{
+}
+
+ion-card {
     margin: 3px;
+}
+
+.modalP {
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modalP img {
+    height: 300px;
+}
+
+.descricao {
+    text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 30px;
+    margin: 0;
+}
+
+.counter__section {
+    width: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.bt {
+    --width: 10px;
+    --height: 10px;
+    --padding: 0;
+}
+.valor{
+    color: rgb(221, 7, 7);
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
 }

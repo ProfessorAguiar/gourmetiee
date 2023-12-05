@@ -1,4 +1,12 @@
 <ion-content [fullscreen]="true">
+  
+  <swiper-container slides-per-view="1" speed="500" loop="true" css-mode="true" id="c1" effect="cards" grab-cursor="true">
+    <swiper-slide lazy="true" *ngFor="let p of promos" >
+      <img src={{p.img}} loading="lazy" id="c1Img"/> 
+    </swiper-slide>
+  </swiper-container>
+  
+  
   <swiper-container slides-per-view="2" speed="500" loop="true" css-mode="true">
     <swiper-slide *ngFor="let p of promos">
       <ion-card (click)="setOpen(true, p.img, p.produto, p.descricao, p.valor, p.qtd)">

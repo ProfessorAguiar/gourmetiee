@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { doc, collection, setDoc, Firestore} from '@angular/fire/firestore';
+import { doc, collection, setDoc, Firestore, getDocs} from '@angular/fire/firestore';
+import { StorageService } from '../Services/storage.service';
 
 @Component({
   selector: 'app-tab4',
@@ -7,22 +8,20 @@ import { doc, collection, setDoc, Firestore} from '@angular/fire/firestore';
   styleUrls: ['./tab4.page.scss'],
 })
 export class Tab4Page implements OnInit {
+  lojas:any=[]
+  
 
-  cadastrarPromo(produto: any, valor: any, descricao: any, qtd: any, imagem: any) {
-    const promo = {
-      descricao: descricao,
-      img: imagem,
-      promocao: produto,
-      qtd: qtd,
-      valor: valor,
-    }
-    const document = doc(collection(this.firestore, 'promos'));
-    return setDoc(document, promo);
-}
-
-constructor(private firestore: Firestore) { }
+constructor(private firestore: Firestore , private stsv:StorageService) { }
 
 ngOnInit() {
+  this.listar()
+}
+async listar() {
+  const querySnapshot = await getDocs(collection(this.firestore, "lojas"));
+  querySnapshot.forEach((doc) => {
+    //console.log(`${doc.id} => ${doc.data()['loja']}`);
+    this.lojas = [...this.lojas, {img: doc.data()['imagem'], loja: doc.data()['loja']}]
+  });
 }
 
 }

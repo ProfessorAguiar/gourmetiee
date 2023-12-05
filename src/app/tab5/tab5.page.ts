@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { doc, collection, setDoc, Firestore, getDocs } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-tab5',
@@ -6,34 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tab5.page.scss'],
 })
 export class Tab5Page implements OnInit {
-  txt='Login com Google'
-  user=false
-  constructor() { }
-  userPhoto:any
-  userName:any
-  ngAfterViewInit(){
-    this.userPhoto=sessionStorage.getItem('fotoPerfil');
-    this.userName=sessionStorage.getItem('Usuario');
-    if(this.userPhoto!=null){
-      this.txt='LogOut'
-      this.user=true
-    }else{
-      this.txt='Login com Google'
-      this.user=false
-    }
-  }
 
-  ngOnInit(){
-    this.userPhoto=sessionStorage.getItem('fotoPerfil');
-    this.userName=sessionStorage.getItem('Usuario');
-    if(this.userPhoto!=null){
-      this.txt='LogOut'
-      this.user=true
-    }else{
-      this.txt='Login com Google'
-      this.user=false
+  cadastrarPromo(produto: any, valor: any, descricao: any, qtd: any, imagem: any) {
+    const promo = {
+      descricao: descricao,
+      img: imagem,
+      promocao: produto,
+      qtd: qtd,
+      valor: valor,
     }
+    const document = doc(collection(this.firestore, 'promos'));
+    return setDoc(document, promo);
   }
+  ngOnInit(): void {
+
+  }
+  constructor(private firestore: Firestore) { }
+
 
 
 }

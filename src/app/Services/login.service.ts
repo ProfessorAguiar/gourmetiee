@@ -1,12 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Auth, GoogleAuthProvider, signInWithPopup, signOut } from '@angular/fire/auth';
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+
+@Injectable({
+  providedIn: 'root'
 })
-export class LoginComponent implements OnInit {
-  @Input() texto = ''
+export class LoginService {
   userPhoto: any
   userName = ''
   LoginComGoogle() {
@@ -38,17 +36,12 @@ export class LoginComponent implements OnInit {
     console.log('login com google')
   }
 
-  logOut(){
+  logOut() {
     sessionStorage.clear();
-    this.userPhoto=null
-    this.userName=''
+    this.userPhoto = null
+    this.userName = ''
+    console.log('logout com google')
     return signOut(this.auth);
   }
-
-  constructor(private auth: Auth) { }
-
-
-
-  ngOnInit() { }
-
+  constructor( private auth:Auth) { }
 }

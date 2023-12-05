@@ -1,0 +1,21 @@
+<ion-fab slot="fixed" vertical="top" horizontal="end" [edge]="true">
+  <ion-fab-button>
+    <ion-img *ngIf="logado" src={{userPhoto}} />
+    <ion-img *ngIf="!logado" src='../../../assets/icon/favicon.png' />
+    <!-- <ion-icon name="person-circle-outline" *ngIf="!logado">x</ion-icon> -->
+  </ion-fab-button>
+  <ion-fab-list side="bottom">
+    <ion-fab-button color="primary" (click)="logarComGoogle()">
+      <ion-icon name="Logo-google"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button color="primary" (click)="logarComGoogle()">
+      <ion-icon name="Logo-facebook"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button color="medium" (click)="logarComGoogle()">
+      <ion-icon name="log-in-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button color="medium" (click)="logarComGoogle()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>

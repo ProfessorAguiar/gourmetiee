@@ -1,46 +1,15 @@
 <ion-content>
-  <ion-card>
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+  <ion-card *ngFor="let l of lojas">
+    <img src={{l.img}} />
     <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      <ion-card-title>{{l.loja}}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Adicionar Promoções</ion-card-title>
-      <ion-card-subtitle>Firebase</ion-card-subtitle>
-    </ion-card-header>
-    <ion-list>
-      <ion-item>
-        <ion-input label="Produto" #produto></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input label="Valor" #valor></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input label="Descrição" #descricao></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input label="Quantidade" #qtd></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input label="imagem" #imagem></ion-input>
-      </ion-item>
-      
-      <ion-button expand="block" (click)="cadastrarPromo(produto.value,valor.value, descricao.value, qtd.value, imagem.value)">Cadastrar</ion-button>
-
-    </ion-list>
-  </ion-card>
+ 
 
 
 </ion-content>

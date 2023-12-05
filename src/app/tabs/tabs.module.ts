@@ -8,7 +8,7 @@ import { TabsPageRoutingModule } from './tabs-routing.module';
 import { TabsPage } from './tabs.page';
 
 import { CarrinhoComponent } from '../Components/carrinho/carrinho.component';
-
+import { LoginBadgeComponent } from '../Components/login-badge/login-badge.component';
 @NgModule({
   imports: [
     IonicModule,
@@ -16,6 +16,6 @@ import { CarrinhoComponent } from '../Components/carrinho/carrinho.component';
     FormsModule,
     TabsPageRoutingModule
   ],
-  declarations: [TabsPage, CarrinhoComponent]
+  declarations: [TabsPage, CarrinhoComponent, LoginBadgeComponent]
 })
 export class TabsPageModule {}

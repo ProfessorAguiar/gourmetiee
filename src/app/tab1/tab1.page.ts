@@ -17,9 +17,9 @@ import {
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  cardapioImages:any=[]
+  cardapioImages: any = []
   swiperModules = [IonicSlides];
-  constructor(private af:Storage) {}
+  constructor(private af: Storage) { }
   ngOnInit() {
     listAll(ref(this.af, 'cardapio')).then(imgs => {
       imgs.items.forEach((im) => {

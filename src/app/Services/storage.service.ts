@@ -6,12 +6,20 @@ import { doc, collection, setDoc, Firestore, collectionData, getDocs } from '@an
 })
 export class StorageService {
   lojas: any = []
-  async listar() {
+  async getLojas() {
+    let lojasArray:any=[]
     const querySnapshot = await getDocs(collection(this.firestore, "lojas"));
-    querySnapshot.forEach((doc) => {
+    querySnapshot.forEach(async (doc) => {
       console.log(`${doc.id} => ${doc.data()['loja']}`);
-      this.lojas = [...this.lojas, {img: doc.data()['imagem'], loja: doc.data()['loja']}]
+      lojasArray = [...lojasArray, {img: doc.data()['imagem'], loja: doc.data()['loja']}]
     });
+    return await lojasArray
+  }
+  async getPromos(){
+
+  }
+  async getCardapio(){
+
   }
   constructor(private firestore:Firestore) { }
 }

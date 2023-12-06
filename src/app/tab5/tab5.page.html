@@ -1,5 +1,64 @@
 <ion-content>
-  
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Adicionar Cardápio</ion-card-title>
+      <ion-card-subtitle>Firebase</ion-card-subtitle>
+    </ion-card-header>
+    <ion-list>
+      <ion-item>
+        <ion-input label="Produto" #produto></ion-input>
+      </ion-item>
+
+      <ion-list>
+        <ion-item>
+          <ion-select placeholder="Categoria" #cat>
+            <ion-select-option value="Bebidas Alcólicas">Bebidas Alcólicas</ion-select-option>
+            <ion-select-option value="Bebidas Não Alcólicas">Bebidas Não Alcólicas</ion-select-option>
+            <ion-select-option value="sanduiches">sanduiches</ion-select-option>
+            <ion-select-option value="Sobremesas">Sobremesas</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <ion-item>
+        <ion-input label="Valor" #valor></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Descrição" #descricao></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Quantidade" #qtd></ion-input>
+      </ion-item>
+
+
+      <ion-button id="open-modal" expand="block">Escolher Imagem</ion-button>
+
+      <!-- <ion-list>
+        <ion-item>
+          <ion-select placeholder="Imagem" #cat>
+            <ion-select-option *ngFor="let cImg of cardapioImages" value={{cImg}}>
+              
+                <ion-img src={{cImg}} />
+                {{cImg}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list> -->
+
+      <ion-item>
+        <ion-input label="imagem" #imagem></ion-input>
+      </ion-item>
+
+      <ion-button expand="block"
+        (click)="cadastrarCardapio(produto.value,valor.value, descricao.value, qtd.value, imagem.value, cat.value)">
+        Cadastrar
+      </ion-button>
+    </ion-list>
+  </ion-card>
 
   <ion-card>
     <ion-card-header>
@@ -30,7 +89,35 @@
       <ion-button expand="block"
         (click)="cadastrarPromo(produto.value,valor.value, descricao.value, qtd.value, imagem.value)">Cadastrar
       </ion-button>
-
     </ion-list>
   </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Adicionar Lojas</ion-card-title>
+      <ion-card-subtitle>Firebase</ion-card-subtitle>
+    </ion-card-header>
+    <ion-list>
+      <ion-item>
+        <ion-input label="Loja" #loja></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="imagem" #imagem></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="cadastrarLoja(loja.value,imagem.value)">Cadastrar
+      </ion-button>
+    </ion-list>
+  </ion-card>
+
+
+  <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+    <ng-template>
+      <div class="block" >
+        <div *ngFor="let imgC of cardapioImages">
+          <img src={{imgC}} class="imgC" />
+        </div>
+      </div>
+    </ng-template>
+  </ion-modal>
+
 </ion-content>

@@ -9,3 +9,28 @@ ion-content {
 img{
   width: 100%;
 }
+.block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+ion-modal {
+  --height: auto;
+  flex-direction: row;
+  
+}
+.imgC{
+  width: 88px;
+  height: 88px;
+  flex-direction: row;
+  margin: 2px;
+  display: flex;
+  flex-wrap: wrap;
+
+}

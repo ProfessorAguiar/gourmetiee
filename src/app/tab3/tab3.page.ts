@@ -30,7 +30,8 @@ export class Tab3Page {
       console.log(`${doc.id} => ${doc.data()['promocao']}`);
       this.promos = [...this.promos, { img: doc.data()['img'], produto: doc.data()['promocao'], valor: doc.data()['valor'], descricao: doc.data()['descricao'], qtd: doc.data()['qtd'] }]
     });
-  }
+  } 
+  
   increment() {
     if (this.count < this.produto[0].pQtd) {
       this.count++;

@@ -6,9 +6,9 @@
     </ion-card-header>
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let i of cardapioImages">
+        <ion-item *ngFor="let p of cardapio" (click)="setOpen(true, p.img, p.produto, p.descricao, p.valor, p.qtd)">
           <ion-thumbnail slot="start">
-            <img src={{i}} />
+            <img src={{p.img}} />
           </ion-thumbnail>
           <ion-label>Item do cardápio</ion-label>
         </ion-item>

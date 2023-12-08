@@ -71,6 +71,7 @@ export class Tab3Page {
     // return setDoc(document, carrinho);
     if (this.cliente !== null) {
       await setDoc(doc(this.firestore, "Carrinho", String(this.cliente)), {
+        cliente:String(this.cliente),
         fotoCliente: String(this.fotoCliente),
         produtos: {
           produto: {

@@ -11,7 +11,7 @@
     <ion-fab-button color="primary" (click)="logarComGoogle()">
       <ion-icon name="Logo-facebook"></ion-icon>
     </ion-fab-button>
-    <ion-fab-button color="medium" (click)="logarComGoogle()">
+    <ion-fab-button color="medium" id="present-alert">
       <ion-icon name="log-in-outline"></ion-icon>
     </ion-fab-button>
     <ion-fab-button color="medium" (click)="logarComGoogle()">
@@ -19,3 +19,11 @@
     </ion-fab-button>
   </ion-fab-list>
 </ion-fab>
+
+
+<ion-alert
+  trigger="present-alert"
+  header="Please enter your info"
+  [buttons]="alertButtons"
+  [inputs]="alertInputs"
+></ion-alert>

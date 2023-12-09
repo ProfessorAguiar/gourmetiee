@@ -2,21 +2,47 @@
   <ion-fab-button id="open-modal">
     <ion-icon name="cart-outline"></ion-icon>
   </ion-fab-button>
-  <ion-fab-list side="top">
+  <!-- <ion-fab-list side="top">
     <div *ngFor="let cItems of carrinhoItems" >
       <img src={{cItems.fotoProduto}} class="imgC" />
     </div>
-  </ion-fab-list>
+  </ion-fab-list> -->
 </ion-fab>
 
 <ion-modal #modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
   <ng-template>
     <ion-content>
       <div class="block">
-        <div *ngFor="let cItems of carrinhoItems" >
-          <img src={{cItems.fotoProduto}} class="imgC" />
-        </div>
+        <h1>Carrinho</h1>
+        <img src={{fotoCliente}} class="imgC">
+        <h3>Cliente: {{cliente}}</h3>
+        <ion-grid>
+          <ion-row class="flinha">
+            <ion-col size="2"><ion-icon name="close-circle-outline" class="btFechar"></ion-icon></ion-col>
+            <ion-col>Produto</ion-col>
+            <ion-col>QTD</ion-col>
+            <ion-col>valor</ion-col>
+            <ion-col>Total</ion-col>
+          </ion-row>
+
+          <div *ngFor="let cItems of carrinhoItems">
+            <ion-row>
+              <ion-col size="2"><ion-icon name="close-circle-outline" class="btFechar" (click)="apagaItem()"></ion-icon></ion-col>
+              <ion-col class="prod">{{cItems.produto}}</ion-col>
+              <ion-col class="qtd">{{cItems.qtd}}</ion-col>
+              <ion-col class="valor">R${{cItems.valor}}</ion-col>
+              <ion-col class="valor">R${{valorTotalItem}}</ion-col>
+              </ion-row>
+
+
+          </div>
+          <ion-row class="llinha">
+            <ion-col>Total da Compra: R${{compraTotal}}</ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-button expand="block">Concluir Compra</ion-button>
       </div>
     </ion-content>
   </ng-template>
 </ion-modal>
+
